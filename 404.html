@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | SN Productions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#000;--accent:#fff;--dim:#666;--gold:#c9a84c;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:var(--bg);color:var(--accent);font-family:'Inter',sans-serif;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+        #loader{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .8s,visibility .8s;}
+        #loader.hidden{opacity:0;visibility:hidden;}
+        #loader img{width:140px;margin-bottom:25px;filter:drop-shadow(0 0 20px rgba(201,168,76,0.4));}
+        .loader-wave{display:flex;align-items:center;gap:8px;height:50px;}
+        .loader-bar{width:6px;background:var(--gold);border-radius:10px;animation:pulse 1.2s infinite ease-in-out;}
+        @keyframes pulse{0%,100%{height:10px;opacity:.3;}50%{height:45px;opacity:1;}}
+        nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(0,0,0,.95);backdrop-filter:blur(4px);border-bottom:1px solid #111;}
+        .nav-logo img{height:45px;}
+        .nav-links{display:flex;gap:35px;}
+        .nav-links a{color:var(--accent);text-decoration:none;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.6;transition:.3s;}
+        .nav-links a:hover{opacity:1;color:var(--gold);}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+        .hamburger span{width:25px;height:2px;background:var(--accent);}
+        .mobile-menu{display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);flex-direction:column;align-items:center;justify-content:center;gap:40px;z-index:99;}
+        .mobile-menu.open{display:flex;}
+        .mobile-menu a{color:var(--accent);text-decoration:none;font-size:1.5rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
+        .mobile-menu a:hover{color:var(--gold);}
+        .close-menu{position:absolute;top:30px;right:40px;font-size:2rem;cursor:pointer;color:var(--accent);background:none;border:none;}
+
+        /* 404 CONTENT */
+        .not-found{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 60px 80px;position:relative;}
+        .not-found-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,transparent 65%);}
+        .error-code{font-size:12rem;font-weight:900;line-height:1;position:relative;z-index:1;
+            background:linear-gradient(135deg,#1a1a1a 0%,#333 50%,#1a1a1a 100%);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            letter-spacing:-8px;}
+        .error-wave{display:flex;align-items:center;gap:6px;height:60px;justify-content:center;margin:10px 0;position:relative;z-index:1;}
+        .error-bar{width:5px;background:var(--gold);border-radius:10px;animation:pulse 1.4s infinite ease-in-out;opacity:.5;}
+        .error-label{font-size:.6rem;letter-spacing:8px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1;}
+        .error-title{font-size:2.5rem;font-weight:900;margin-bottom:15px;position:relative;z-index:1;}
+        .error-sub{color:var(--dim);font-size:.95rem;line-height:1.7;max-width:500px;margin:0 auto 40px;position:relative;z-index:1;}
+        .error-links{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+        .btn{padding:14px 36px;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:.3s;display:inline-block;}
+        .btn:hover{background:var(--gold);color:#000;}
+        .btn-fill{background:var(--gold);color:#000;}
+        .btn-fill:hover{background:transparent;color:var(--gold);}
+        .quick-links{display:flex;gap:25px;justify-content:center;flex-wrap:wrap;margin-top:50px;position:relative;z-index:1;}
+        .quick-links a{color:var(--dim);text-decoration:none;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;transition:.3s;}
+        .quick-links a:hover{color:var(--gold);}
+
+        footer{background:#000;border-top:1px solid #1a1a1a;padding:40px 60px;text-align:center;}
+        .footer-copy{font-size:.6rem;color:#333;letter-spacing:2px;}
+        @media(max-width:900px){
+            nav{padding:20px 30px;}.nav-links{display:none;}.hamburger{display:flex;}
+            .error-code{font-size:7rem;letter-spacing:-4px;}
+            .error-title{font-size:1.8rem;}
+            .not-found{padding:120px 30px 60px;}
+            footer{padding:30px 20px;}
+        }
+    </style>
+</head>
+<body>
+
+<div id="loader">
+    <img src="SN Logo Dark.png" alt="SN Productions">
+    <div class="loader-wave">
+        <div class="loader-bar" style="animation-delay:0s"></div>
+        <div class="loader-bar" style="animation-delay:.15s"></div>
+        <div class="loader-bar" style="animation-delay:.3s"></div>
+        <div class="loader-bar" style="animation-delay:.45s"></div>
+        <div class="loader-bar" style="animation-delay:.3s"></div>
+        <div class="loader-bar" style="animation-delay:.15s"></div>
+        <div class="loader-bar" style="animation-delay:0s"></div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav-logo"><a href="index.html"><img src="SN Logo Dark.png" alt="SN Productions"></a></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="dj.html">DJ</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="book.html" style="color:var(--gold);opacity:1;">Book Now</a>
+    </div>
+    <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" onclick="closeMenu()">&#x2715;</button>
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="about.html" onclick="closeMenu()">About</a>
+    <a href="dj.html" onclick="closeMenu()">DJ</a>
+    <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
+    <a href="book.html" onclick="closeMenu()" style="color:var(--gold)">Book Now</a>
+</div>
+
+<main class="not-found">
+    <div class="not-found-bg"></div>
+    <div class="error-code">404</div>
+    <div class="error-wave">
+        <div class="error-bar" style="animation-delay:0s;height:15px"></div>
+        <div class="error-bar" style="animation-delay:.1s;height:30px"></div>
+        <div class="error-bar" style="animation-delay:.2s;height:50px"></div>
+        <div class="error-bar" style="animation-delay:.3s;height:35px"></div>
+        <div class="error-bar" style="animation-delay:.4s;height:50px"></div>
+        <div class="error-bar" style="animation-delay:.3s;height:35px"></div>
+        <div class="error-bar" style="animation-delay:.2s;height:50px"></div>
+        <div class="error-bar" style="animation-delay:.1s;height:30px"></div>
+        <div class="error-bar" style="animation-delay:0s;height:15px"></div>
+    </div>
+    <div class="error-label">Signal Lost</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-sub">Looks like this frequency doesn't exist. The page you're looking for may have been moved, deleted, or never existed.</p>
+    <div class="error-links">
+        <a href="index.html" class="btn btn-fill">Back to Home</a>
+        <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+    <div class="quick-links">
+        <a href="about.html">About</a>
+        <a href="dj.html">DJ Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="book.html">Book Now</a>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; 2026 SN PRODUCTIONS &mdash; ENGINEERED FOR IMPACT</div>
+</footer>
+
+<script>
+    window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},1400);});
+    function openMenu(){document.getElementById('mobileMenu').classList.add('open');}
+    function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+</script>
+</body>
+</html>
