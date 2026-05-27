@@ -325,11 +325,16 @@
         if(!r) return;
         document.getElementById('modalTitle').textContent = r.type==='booking'?'Booking Request':'Contact Message';
         const skip=['id','type'];
-        const labels={name:'Name',email:'Email',phone:'Phone',package:'Package',guests:'Guests',date:'Event Date',time:'Event Time',action:'Service Requested',notes:'Additional Notes',contact_pref:'Contact Preference',message:'Message',timestamp:'Submitted'};
+        const labels={name:'Name',email:'Email',phone:'Phone',package:'Package',event_length_hours:'Event Length',after_midnight:'Past Midnight',estimated_total:'Estimated Total',estimate_breakdown:'Estimate Breakdown',estimate_warning:'Estimate Warning',custom_needs:'Custom Needs',target_budget:'Target Budget',event_priority:'Event Priority',custom_notes:'Custom Package Notes',guests:'Guests',date:'Event Date',time:'Event Time',action:'Service Requested',notes:'Additional Notes',contact_pref:'Contact Preference',message:'Message',timestamp:'Submitted'};
         let html='';
         Object.entries(r).forEach(([k,v])=>{
             if(skip.includes(k)) return;
-            const val = k==='timestamp'?new Date(v).toLocaleString():v;
+            let val = k==='timestamp'?new Date(v).toLocaleString():v;
+            if(k==='estimated_total' && typeof v === 'number') val = '$' + Math.round(v).toLocaleString();
+            else if(k==='estimate_breakdown' && Array.isArray(v)) val = v.map(line=>`${line.label}: ${line.value}`).join('<br>');
+            else if(Array.isArray(v)) val = v.join(', ');
+            else if(typeof v === 'boolean') val = v ? 'Yes' : 'No';
+            else if(v && typeof v === 'object') val = JSON.stringify(v);
             html+=`<div class="modal-row"><span class="modal-key">${labels[k]||k}</span><span class="modal-val">${val||'—'}</span></div>`;
         });
         document.getElementById('modalBody').innerHTML = html;
