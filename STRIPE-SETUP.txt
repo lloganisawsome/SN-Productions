@@ -1,0 +1,16 @@
+SN PRODUCTIONS TIP PAGE — STRIPE SETUP
+
+1. Sign into Stripe and open Payment links.
+2. Create four fixed-price products/payment links: $5, $10, $15, and $20.
+3. Create one more payment link and enable "Customers choose what to pay".
+   Set its minimum to $5.01 (or whatever minimum above $5 you prefer).
+4. Open stripe-config.js in a text editor.
+5. Replace each PASTE_STRIPE... placeholder with its matching https://buy.stripe.com/... link.
+6. Upload the whole folder to your website, keeping all filenames and folders together.
+
+IMPORTANT
+- Do not put a Stripe secret key in these files.
+- Fixed tip buttons take visitors straight to the matching Stripe link.
+- The custom popup validates the amount first. Stripe's customer-chosen-price page
+  asks the visitor to enter/confirm that amount securely on Stripe.
+- Use Stripe test mode links first if you want to test without charging real money.

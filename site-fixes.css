@@ -1,0 +1,39 @@
+/* Shared safety net for small screens. Loaded after each page's original CSS. */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+nav, section, main, footer, form, div { min-width: 0; }
+input, select, textarea, button { max-width: 100%; }
+
+@media (max-width: 900px) {
+  nav { width: 100%; padding: 16px 18px !important; }
+  .nav-logo img { height: 38px !important; width: auto; }
+  .hamburger { padding: 8px; margin-right: -8px; }
+  .mobile-menu { width: 100%; padding: 76px 22px 28px; gap: 25px !important; overflow-y: auto; }
+  .mobile-menu a { font-size: 1.05rem !important; letter-spacing: 3px !important; }
+  .close-menu { top: 20px !important; right: 20px !important; }
+  .hero { min-height: 680px; height: 100svh; padding: 105px 18px 60px; }
+  .hero img { width: min(220px, 66vw) !important; }
+  .hero-cta { width: 100%; flex-direction: column; align-items: stretch; gap: 12px !important; }
+  .hero-cta .btn { width: min(100%, 330px); margin-inline: auto; text-align: center; }
+  .tagline { max-width: 100%; font-size: .63rem !important; letter-spacing: 4px !important; line-height: 1.7; }
+  .page-title, .dj-title, .section-title, .cta-band h2 { overflow-wrap: anywhere; }
+  .content-grid, .packages-grid, .about-grid, .contact-wrap { width: 100%; margin-left: 0 !important; margin-right: 0 !important; }
+  .stats-section { width: 100%; margin-left: 0 !important; margin-right: 0 !important; }
+  .book-wrap, .contact-info, .contact-form-wrap, .about-card,
+  .mission-section, .hours-section, .values-section, .genres-section,
+  .equip-section, .cta-band, .page-hero, .dj-hero, .filter-bar {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .form-grid, .checkbox-grid { width: 100%; }
+  .form-group, .custom-package-panel, .estimate-card { min-width: 0; }
+  .footer-links { gap: 14px 18px !important; }
+}
+
+@media (max-width: 520px) {
+  .stats-section { grid-template-columns: 1fr !important; padding: 20px !important; }
+  .stat-box { padding: 34px 20px !important; }
+  .equip-grid, .hours-grid { grid-template-columns: 1fr !important; }
+  .pkg-card, .service-box { padding-left: 22px !important; padding-right: 22px !important; }
+  .btn { white-space: normal; line-height: 1.45; }
+}
